@@ -34,6 +34,53 @@ Note:
 - Lastly, test your settings by executing `./slack_presence what's a computer`
 
 
+## Integration with SleepWatcher
+
+So you can integrate it with sleepwatcher to automatically set the status when
+you're away.
+
+- Install sleepwatcher. `brew install sleepwatcher`
+
+- put the commands you want to execute when you're sleep or wake up in `~/.sleep`, `~/.wakeup` respectively. They must be executable.
+
+- Start the sleepwatcher daemon. `brew services start sleepwatcher`
+
+If you want to be fancy you can run commands when dispaly dims/un-dims. Edit
+`/usr/local/opt/sleepwatcher/de.bernhard-baehr.sleepwatcher-20compatibility-localuser.plist`
+
+Here's what my file looks like:
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Label</key>
+	<string>de.bernhard-baehr.sleepwatcher</string>
+	<key>ProgramArguments</key>
+	<array>
+		<string>/usr/local/sbin/sleepwatcher</string>
+		<string>-V</string>
+		<string>-D ~/.sleep</string>
+		<string>-E ~/.wakeup</string>
+	</array>
+	<key>RunAtLoad</key>
+	<true/>
+	<key>KeepAlive</key>
+	<true/>
+</dict>
+</plist>
+```
+
+Now, stop and start sleepwatcher service again `brew services stop sleepwatcher; and brew services start
+sleepwatcher`
+
+
+Lastly, See here to get the idea of `sleep` and `wakeup` scripts
+- [sleep](https://github.com/roguesherlock/dotfiles/blob/macOS/scripts/sleepwatcher/going_to_sleep.fish)
+- [wakeup](https://github.com/roguesherlock/dotfiles/blob/macOS/scripts/sleepwatcher/waking_from_sleep.fish)
+
+
 ## Note for Developers
 
 If you want to edit the app, you can just modify the files and run `mix
