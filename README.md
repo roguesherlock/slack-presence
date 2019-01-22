@@ -39,7 +39,7 @@ Note:
 So you can integrate it with sleepwatcher to automatically set the status when
 you're away.
 
-- Install sleepwatcher. `brew install sleepwatcher`
+- Install sleepwatcher. `brew install sleepwatcher` (having trouble installing sleepwatcher? See [Trouble?](#Trouble?))
 
 - put the commands you want to execute when you're sleep or wake up in `~/.sleep`, `~/.wakeup` respectively. They must be executable.
 
@@ -93,3 +93,26 @@ I created this app because I didn't want to post message to slack channel every
 time I'm afk. So, I use this to post status messages to `#status` channel and
 set the status for every time I put my computer to sleep or wake up 🙃. Hope
 it's useful to you in some way 🙂
+
+
+## Trouble?
+
+### `/usr/local/sbin is not writable.`
+
+Usually this error occurs because High Sierra by default no longer creates this
+directory. Here's a simple way to fix it.
+
+```
+sudo mkdir /usr/local/sbin
+sudo chown -R (whoami):admin /usr/local/sbin
+```
+
+Now, you can link sleepwatcher by executing
+
+`brew link sleepwatcher`
+
+
+
+## P.S.
+
+- All shell commands mentioned here are for [fish shell](https://fishshell.com).
