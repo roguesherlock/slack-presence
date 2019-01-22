@@ -39,7 +39,7 @@ Note:
 So you can integrate it with sleepwatcher to automatically set the status when
 you're away.
 
-- Install sleepwatcher. `brew install sleepwatcher` (having trouble installing sleepwatcher? See [Trouble?](#Trouble?))
+- Install sleepwatcher. `brew install sleepwatcher` (having trouble installing sleepwatcher? See [Trouble?](#trouble))
 
 - put the commands you want to execute when you're sleep or wake up in `~/.sleep`, `~/.wakeup` respectively. They must be executable.
 
